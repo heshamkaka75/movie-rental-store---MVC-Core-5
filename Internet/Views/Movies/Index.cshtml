@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Internet.Models.Movies>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.movie_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Desc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rate)
+            </th>
+            <th>
+                Images
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Actor.actor_name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.movie_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Desc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rate)
+            </td>
+            <td>
+                @if (item.ImgUrl != null && item.ImgUrl != "")
+                {
+                    <img src="~/upload/@item.ImgUrl" class="img-thumbnail" style="width:40px;" />
+                }
+                else {
+                <img src="~/x.png"  class="img-thumbnail" style="width:40px;" />
+                }
+            </td>
+            <td>
+                
+                @Html.DisplayFor(modelItem => item.Actor.actor_name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.movie_id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.movie_id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.movie_id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,54 @@
+﻿@model Internet.Models.Movies
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Movies</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.movie_name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.movie_name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Desc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Desc)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.rate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.rate)
+        </dd>
+        <dt class="col-sm-2">
+            Image
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ImgUrl)
+        </dd>
+        <dt class="col-sm-2">
+            @if (Model.ImgUrl != null && Model.ImgUrl != "")
+            {
+            <img src="~/upload/@Model.ImgUrl"  class="img-thumbnail" style="width:40px;" />
+            }
+            else { 
+            <img src="~/x.png"  class="img-thumbnail" style="width:40px;" />
+            }
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Actor.actor_name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.movie_id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

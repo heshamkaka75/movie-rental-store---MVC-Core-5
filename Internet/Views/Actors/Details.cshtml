@@ -1,0 +1,30 @@
+﻿@model Internet.Models.Actors
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Actors</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.actor_name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.actor_name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.age)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.age)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.actor_id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
